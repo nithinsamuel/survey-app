@@ -8,6 +8,11 @@ import Axios from "axios";
 const App = () => {
   const [courseSurveys, setCourseSurveys] = useState([])
   const [isLoading,setIsLoading]=useState(true);
+  const MultiSelectValues = [
+    {  id:"ddl_1",label: "self-paced modules",value:"spm" },
+    {   id:"ddl_2",label: "classroom modules",value:"cm" },
+    {   id:"ddl_3",label: "journeys",value:"js" },    
+  ];
   useEffect(()=>{    
       Axios.get("http://localhost:5000/surveys").then((response) => {
         console.log("response.data.surveys", response.data.surveys);
@@ -22,7 +27,7 @@ const App = () => {
         setIsLoading(false);
         console.log("error",error);
         const testSurvey=[
-          { id: "cg1", text: "test-Training Feedback",
+          { id: "cg1", text: "Training Feedback",
           dropdownVal:[
             {  label: "self-paced modules",value:"spm"  },
             {  label: "classroom modules",value:"cm"  },
@@ -44,20 +49,27 @@ const App = () => {
     setCourseSurveys((prevCourseSurveys) => prevCourseSurveys.concat(NewSurvey));
   };
   //return existing survey by id
-  const editSurveyHandler=(surveyId)=>{
+  const findUserHandler=(surveyId)=>{
     const found = courseSurveys.find(element => element.id === surveyId);
     return found;
   }
   //Edit Survey
   const editSurvey=(surveyToBeEdited)=>{
-    const updatedSurveys=courseSurveys.map((courseGoal)=>{
-      if (courseGoal.id === surveyToBeEdited.id) {
+    const updatedSurveys=courseSurveys.map((coursesurvey)=>{
+      if (coursesurvey.id === surveyToBeEdited.id) {
         return { ...surveyToBeEdited, text: surveyToBeEdited.text,dropdownVal:surveyToBeEdited.dropdownVal };
       } else {
-        return courseGoal;
+        return coursesurvey;
       }
     })
     setCourseSurveys(updatedSurveys)
+  }
+  //delete Survey
+  const deleteSurvey=(surveyToBeDeleted)=>{
+    const remainingSurveys = courseSurveys.filter((coursesurvey) => {
+      return coursesurvey.id !== surveyToBeDeleted;
+    });
+    setCourseSurveys(remainingSurveys);
   }
 
   return (
@@ -70,18 +82,21 @@ const App = () => {
           {/* home page */}
         <Route exact path="/" 
         render={(props)=><SurveyList 
-        Surveys={courseSurveys}         
+        Surveys={courseSurveys}   
+        deleteSurveyHandler={deleteSurvey}      
         {...props}/>}/>  
         {/* add new survey*/}
           <Route exact path="/addNewSurvey" 
           render={(props)=><NewSurvey 
-          onAddGoal={saveSurvey} 
+          onAddsurvey={saveSurvey} 
+          MultiSelectValues={MultiSelectValues}
           {...props}/>}/>      
           {/* edit survey*/}
           <Route exact path="/editSurvey/:surveyId" 
           render={(props)=><NewSurvey 
-          onEditGoal={editSurvey} 
-          editSurveyHandler={editSurveyHandler} 
+          onEditsurvey={editSurvey} 
+          findUserHandler={findUserHandler} 
+          MultiSelectValues={MultiSelectValues}
           {...props}/>}/>
         </Switch>
       </Router>
