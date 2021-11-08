@@ -24,8 +24,6 @@ const App = () => {
         }
       }).catch(error=>{
         //In case axios request fails we will use a local test data
-        setIsLoading(false);
-        console.log("error",error);
         const testSurvey=[
           { id: "cg1", text: "Training Feedback",
           dropdownVal:[
@@ -41,6 +39,9 @@ const App = () => {
         },
         ]
         setCourseSurveys(testSurvey);
+        setIsLoading(false);
+        console.log("error",error);
+        
       })
   },[])
 
