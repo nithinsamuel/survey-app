@@ -4,7 +4,7 @@ import SurveyList from "./components/SurveyList/SurveyList";
 import NewSurvey from "./components/NewSurvey/NewSurvey";
 import Header from './common/Header';
 import "./App.css";
-// import Axios from "axios";
+import Axios from "axios";
 const App = () => {
   const [courseSurveys, setCourseSurveys] = useState([])
   const [isLoading,setIsLoading]=useState(true);
@@ -14,22 +14,35 @@ const App = () => {
     {   id:"ddl_3",label: "journeys",value:"js" },    
   ];
   useEffect(()=>{    
-    const testSurvey=[
-      { id: "cg1", text: "Training Feedback",
-      dropdownVal:[
-        {  label: "self-paced modules",value:"spm"  },
-        {  label: "classroom modules",value:"cm"  },
-      ]},
-      { id: "cg2", text: "External COntent Rating",
-      dropdownVal:[
-        {  label: "classroom modules",value:"cm"  },
-      ] },
-      { id: "cg3", text: "HTrainer Effectiveness",
-      dropdownVal:[{  label: "journeys",value:"js"  },],
-    },
-    ]
-    setCourseSurveys(testSurvey);
-    setIsLoading(false);
+      Axios.get("http://localhost:5000/surveys").then((response) => {
+        console.log("response.data.surveys", response.data.surveys);
+        if(response.data.surveys){
+          setCourseSurveys(response.data.surveys);
+          setIsLoading(false);
+        }else{
+          setIsLoading(false);
+        }
+      }).catch(error=>{
+        //In case axios request fails we will use a local test data
+        const testSurvey=[
+          { id: "cg1", text: "Training Feedback",
+          dropdownVal:[
+            {  label: "self-paced modules",value:"spm"  },
+            {  label: "classroom modules",value:"cm"  },
+          ]},
+          { id: "cg2", text: "External COntent Rating",
+          dropdownVal:[
+            {  label: "classroom modules",value:"cm"  },
+          ] },
+          { id: "cg3", text: "HTrainer Effectiveness",
+          dropdownVal:[{  label: "journeys",value:"js"  },],
+        },
+        ]
+        setCourseSurveys(testSurvey);
+        setIsLoading(false);
+        console.log("error-new",error);
+        
+      })
   },[])
 
   const saveSurvey = (NewSurvey) => {
