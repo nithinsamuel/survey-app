@@ -7,11 +7,11 @@ const SurveyList = (props) => {
 
   // Add New Survey
   const addNewHandler=()=>{
-    history.push('/addNewSurvey');
+    history.push('/survey-app/addNewSurvey');
   }
   // Edit Survey
   const editHandler=()=>{
-    history.push(`/editSurvey/${surveyId}`);
+    history.push(`/survey-app/editSurvey/${surveyId}`);
   }
 // //  Delete Survey
 const deleteHandler=()=>{
