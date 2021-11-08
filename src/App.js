@@ -32,7 +32,7 @@ const App = () => {
     ];
     console.log("testSurvey",testSurvey);
     setCourseSurveys(testSurvey);
-  },[])
+  },[courseSurveys])
 
   const saveSurvey = (NewSurvey) => {
     // setCourseSurveys(courseSurveys.concat(NewSurvey));
