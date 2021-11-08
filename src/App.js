@@ -30,7 +30,7 @@ const App = () => {
       dropdownVal:[{  label: "journeys",value:"js"  },],
     },
     ];
-    console.log("testSurvey",testSurvey);
+    console.log("testSurvey updated",testSurvey);
     setCourseSurveys(testSurvey);
   },[courseSurveys])
 
