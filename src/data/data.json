@@ -1,0 +1,14 @@
+[
+          { id: "cg1", text: "Training Feedback",
+          dropdownVal:[
+            {  label: "self-paced modules",value:"spm"  },
+            {  label: "classroom modules",value:"cm"  },
+          ]},
+          { id: "cg2", text: "External COntent Rating",
+          dropdownVal:[
+            {  label: "classroom modules",value:"cm"  },
+          ] },
+          { id: "cg3", text: "HTrainer Effectiveness",
+          dropdownVal:[{  label: "journeys",value:"js"  },],
+        },
+        ]

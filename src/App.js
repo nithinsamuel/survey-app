@@ -40,7 +40,7 @@ const App = () => {
         ]
         setCourseSurveys(testSurvey);
         setIsLoading(false);
-        console.log("error",error);
+        console.log("error-axios",error);
         
       })
   },[])
