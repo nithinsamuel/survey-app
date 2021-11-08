@@ -14,35 +14,24 @@ const App = () => {
     {   id:"ddl_3",label: "journeys",value:"js" },    
   ];
   useEffect(()=>{    
-      Axios.get("http://localhost:5000/surveys").then((response) => {
-        console.log("response.data.surveys", response.data.surveys);
-        if(response.data.surveys){
-          setCourseSurveys(response.data.surveys);
-          setIsLoading(false);
-        }else{
-          setIsLoading(false);
-        }
-      }).catch(error=>{
-        //In case axios request fails we will use a local test data
-        const testSurvey=[
-          { id: "cg1", text: "Training Feedback",
-          dropdownVal:[
-            {  label: "self-paced modules",value:"spm"  },
-            {  label: "classroom modules",value:"cm"  },
-          ]},
-          { id: "cg2", text: "External COntent Rating",
-          dropdownVal:[
-            {  label: "classroom modules",value:"cm"  },
-          ] },
-          { id: "cg3", text: "HTrainer Effectiveness",
-          dropdownVal:[{  label: "journeys",value:"js"  },],
-        },
-        ]
-        setCourseSurveys(testSurvey);
-        setIsLoading(false);
-        console.log("error-new",error);
-        
-      })
+    setIsLoading(false);
+    // console.log("error",error);
+    const testSurvey=[
+      { id: "cg1", text: "Training Feedback",
+      dropdownVal:[
+        {  label: "self-paced modules",value:"spm"  },
+        {  label: "classroom modules",value:"cm"  },
+      ]},
+      { id: "cg2", text: "External COntent Rating",
+      dropdownVal:[
+        {  label: "classroom modules",value:"cm"  },
+      ] },
+      { id: "cg3", text: "HTrainer Effectiveness",
+      dropdownVal:[{  label: "journeys",value:"js"  },],
+    },
+    ];
+    console.log("testSurvey",testSurvey);
+    setCourseSurveys(testSurvey);
   },[])
 
   const saveSurvey = (NewSurvey) => {
