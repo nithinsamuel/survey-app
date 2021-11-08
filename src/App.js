@@ -6,34 +6,26 @@ import Header from './common/Header';
 import "./App.css";
 import Axios from "axios";
 const App = () => {
-  const [courseSurveys, setCourseSurveys] = useState([])
-  const [isLoading,setIsLoading]=useState(true);
+  const [courseSurveys, setCourseSurveys] = useState([
+    { id: "cg1", text: "Training Feedback",
+    dropdownVal:[
+      {  label: "self-paced modules",value:"spm"  },
+      {  label: "classroom modules",value:"cm"  },
+    ]},
+    { id: "cg2", text: "External COntent Rating",
+    dropdownVal:[
+      {  label: "classroom modules",value:"cm"  },
+    ] },
+    { id: "cg3", text: "HTrainer Effectiveness",
+    dropdownVal:[{  label: "journeys",value:"js"  },],
+  },
+  ])
+  const [isLoading,setIsLoading]=useState(false);
   const MultiSelectValues = [
     {  id:"ddl_1",label: "self-paced modules",value:"spm" },
     {   id:"ddl_2",label: "classroom modules",value:"cm" },
     {   id:"ddl_3",label: "journeys",value:"js" },    
   ];
-  useEffect(()=>{    
-    setIsLoading(false);
-    // console.log("error",error);
-    const testSurvey=[
-      { id: "cg1", text: "Training Feedback",
-      dropdownVal:[
-        {  label: "self-paced modules",value:"spm"  },
-        {  label: "classroom modules",value:"cm"  },
-      ]},
-      { id: "cg2", text: "External COntent Rating",
-      dropdownVal:[
-        {  label: "classroom modules",value:"cm"  },
-      ] },
-      { id: "cg3", text: "HTrainer Effectiveness",
-      dropdownVal:[{  label: "journeys",value:"js"  },],
-    },
-    ];
-    console.log("testSurvey updated",testSurvey);
-    setCourseSurveys(testSurvey);
-  },[courseSurveys])
-
   const saveSurvey = (NewSurvey) => {
     // setCourseSurveys(courseSurveys.concat(NewSurvey));
     setCourseSurveys((prevCourseSurveys) => prevCourseSurveys.concat(NewSurvey));
