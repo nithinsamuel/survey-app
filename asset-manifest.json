@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "./static/css/main.03456234.chunk.css",
-    "main.js": "./static/js/main.6f1fbe62.chunk.js",
-    "main.js.map": "./static/js/main.6f1fbe62.chunk.js.map",
-    "runtime-main.js": "./static/js/runtime-main.789999b7.js",
-    "runtime-main.js.map": "./static/js/runtime-main.789999b7.js.map",
-    "static/js/2.106813df.chunk.js": "./static/js/2.106813df.chunk.js",
-    "static/js/2.106813df.chunk.js.map": "./static/js/2.106813df.chunk.js.map",
-    "index.html": "./index.html",
-    "static/css/main.03456234.chunk.css.map": "./static/css/main.03456234.chunk.css.map",
-    "static/js/2.106813df.chunk.js.LICENSE.txt": "./static/js/2.106813df.chunk.js.LICENSE.txt"
+    "main.css": "/survey-app/static/css/main.03456234.chunk.css",
+    "main.js": "/survey-app/static/js/main.6213f746.chunk.js",
+    "main.js.map": "/survey-app/static/js/main.6213f746.chunk.js.map",
+    "runtime-main.js": "/survey-app/static/js/runtime-main.bcf3ac44.js",
+    "runtime-main.js.map": "/survey-app/static/js/runtime-main.bcf3ac44.js.map",
+    "static/js/2.c2bc751b.chunk.js": "/survey-app/static/js/2.c2bc751b.chunk.js",
+    "static/js/2.c2bc751b.chunk.js.map": "/survey-app/static/js/2.c2bc751b.chunk.js.map",
+    "index.html": "/survey-app/index.html",
+    "static/css/main.03456234.chunk.css.map": "/survey-app/static/css/main.03456234.chunk.css.map",
+    "static/js/2.c2bc751b.chunk.js.LICENSE.txt": "/survey-app/static/js/2.c2bc751b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.789999b7.js",
-    "static/js/2.106813df.chunk.js",
+    "static/js/runtime-main.bcf3ac44.js",
+    "static/js/2.c2bc751b.chunk.js",
     "static/css/main.03456234.chunk.css",
-    "static/js/main.6f1fbe62.chunk.js"
+    "static/js/main.6213f746.chunk.js"
   ]
 }
